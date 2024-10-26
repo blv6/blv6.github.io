@@ -27,18 +27,38 @@
             background-attachment: fixed;
         }
 
+        .nav-tabs {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0; /* Espaço acima e abaixo */
+        }
+
+        .nav-tabs li {
+            margin-right: 20px;
+        }
+
+        .nav-tabs li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-tabs a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-tabs a:hover {
+            color: var(--accent-color);
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: var(--accent-color);
-            margin-bottom: 40px;
-            font-size: 2.5em;
-            animation: glow 2s ease-in-out infinite alternate;
         }
 
         .emulator-list {
@@ -115,15 +135,6 @@
             opacity: 0.7;
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color);
-            }
-            to {
-                text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
-            }
-        }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -150,7 +161,15 @@
 
 <body>
     <div class="container">
-        <h1>Blackn777 Forum - Emuladores</h1>
+        <!-- Removido o título "Blackn777 Forum" -->
+        
+        <!-- Barra de Navegação -->
+        <ul class="nav-tabs">
+            <li><a href="e4vx.html">E4vx</a></li>
+            <li><a href="otimizacao.html">Otimização</a></li>
+            <li><a href="discord.html">Discord</a></li>
+        </ul>
+
         <div class="emulator-list">
             <div class="emulator-card">
                 <div class="emulator-info">
