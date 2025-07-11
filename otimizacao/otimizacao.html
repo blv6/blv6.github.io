@@ -1,461 +1,470 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Otimização de PC - A ferramenta definitiva para maximizar o desempenho do seu computador">
-    <meta name="theme-color" content="#7E22CE">
-    <title>Otimização de PC | Blackn777</title>
-    
-    <!-- Fontes e Ícones -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #7E22CE;
-            --primary-dark: #5B21B6;
-            --primary-light: #A855F7;
-            --accent: #FF00FF;
-            --accent-dark: #CC00CC;
-            --dark: #0F0A1E;
-            --darker: #090612;
-            --light: #F8FAFC;
-            --gray: #94A3B8;
-            
-            --neon-glow: 0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.5);
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            
-            --rounded-sm: 0.25rem;
-            --rounded: 0.5rem;
-            --rounded-md: 0.75rem;
-            --rounded-lg: 1rem;
-            --rounded-xl: 1.5rem;
-            --rounded-full: 9999px;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body, html {
-            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-            background: var(--darker);
-            color: var(--light);
-            min-height: 100vh;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-        
-        .container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .container::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, var(--primary-dark), transparent 50%),
-                radial-gradient(circle at 80% 70%, var(--accent-dark), transparent 50%);
-            opacity: 0.15;
-            z-index: -1;
-        }
-        
-        /* Navegação */
-        nav {
-            margin-bottom: 3rem;
-        }
-        
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            list-style: none;
-            padding: 0;
-        }
-        
-        .nav-tabs li {
-            position: relative;
-        }
-        
-        .nav-tabs a {
-            text-decoration: none;
-            color: var(--light);
-            font-weight: 500;
-            font-size: 1rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--rounded-full);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-        }
-        
-        .nav-tabs a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .nav-tabs a:hover {
-            color: var(--accent);
-            box-shadow: var(--neon-glow);
-            transform: translateY(-2px);
-        }
-        
-        .nav-tabs a:hover::before {
-            left: 100%;
-        }
-        
-        /* Conteúdo principal */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 2rem 0;
-            animation: fadeIn 1s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, var(--primary-light), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: var(--neon-glow);
-            letter-spacing: 1px;
-            position: relative;
-        }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-        }
-        
-        .description {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            line-height: 1.6;
-        }
-        
-        /* Card de Download */
-        .download-card {
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: var(--rounded-xl);
-            padding: 2.5rem;
-            width: 100%;
-            max-width: 600px;
-            margin: 2rem 0;
-            border: 1px solid rgba(255, 0, 255, 0.1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .download-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
-            z-index: -1;
-            border-radius: var(--rounded-xl);
-            opacity: 0;
-            transition: 0.5s;
-        }
-        
-        .download-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .download-card:hover::before {
-            opacity: 0.3;
-        }
-        
-        .download-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .download-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: var(--rounded-full);
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(126, 34, 206, 0.3);
-        }
-        
-        .download-link:hover {
-            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-            width: 100%;
-        }
-        
-        .feature {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--rounded-lg);
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .feature-icon {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-        
-        .feature-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .feature-desc {
-            font-size: 0.9rem;
-            color: var(--gray);
-            line-height: 1.5;
-        }
-        
-        /* Rodapé */
-        .footer {
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-            color: var(--gray);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .footer a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .footer a:hover {
-            color: white;
-            text-shadow: var(--neon-glow);
-        }
-        
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-            
-            .nav-tabs {
-                gap: 0.5rem;
-            }
-            
-            .nav-tabs a {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-            
-            .download-card {
-                padding: 1.5rem;
-            }
-            
-            .download-link {
-                font-size: 1rem;
-                padding: 0.8rem 1.5rem;
-            }
-        }
-        
-        /* Tema Light */
-        [data-theme="light"] body {
-            background: #F3F4F6;
-            color: #1F2937;
-        }
-        
-        [data-theme="light"] .container::before {
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(126, 34, 206, 0.1), transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1), transparent 50%);
-        }
-        
-        [data-theme="light"] .nav-tabs a {
-            background: rgba(255, 255, 255, 0.7);
-            color: #4B5563;
-        }
-        
-        [data-theme="light"] .download-card,
-        [data-theme="light"] .feature {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(126, 34, 206, 0.1);
-        }
-        
-        [data-theme="light"] .description,
-        [data-theme="light"] .feature-desc {
-            color: #6B7280;
-        }
-        
-        [data-theme="light"] .footer {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ferramenta definitiva para otimizar o desempenho do seu PC." />
+  <meta name="theme-color" content="#6366f1" />
+  <title>Otimização de PC | Blackn777</title>
+
+  <!-- Pré-carregar recursos -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+
+  <!-- Fontes e ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-dark: #4f46e5;
+      --accent: #a855f7;
+      --accent-light: #c084fc;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+      --gray-light: #e2e8f0;
+      
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow: 0 2px 4px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.12);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      
+      --rounded-sm: 0.25rem;
+      --rounded: 0.5rem;
+      --rounded-md: 0.75rem;
+      --rounded-lg: 1rem;
+      --rounded-xl: 1.5rem;
+      --rounded-full: 9999px;
+      
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1), transparent 30%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding-top: 1rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      font-size: 1.3em;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav a:hover {
+      color: var(--light);
+    }
+
+    nav a i {
+      font-size: 0.9em;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .description {
+      font-size: 1.125rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 2rem;
+      border-radius: var(--rounded-lg);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 3rem;
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+      will-change: transform;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--light);
+    }
+
+    .card p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: var(--rounded-full);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+      background: linear-gradient(to right, var(--primary-dark), var(--accent));
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .feature {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 1.5rem;
+      border-radius: var(--rounded-lg);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .feature h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .feature h3 i {
+      color: var(--primary-light);
+    }
+
+    .feature p {
+      color: var(--gray);
+      font-size: 0.9375rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: auto;
+      color: var(--gray);
+      font-size: 0.875rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    footer a:hover {
+      color: var(--accent-light);
+    }
+
+    /* Animações */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Tema light */
+    [data-theme="light"] body {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .gradient-bg {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05), transparent 30%);
+    }
+
+    [data-theme="light"] nav a {
+      color: #64748b;
+    }
+
+    [data-theme="light"] nav a:hover {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .description {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .card {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    [data-theme="light"] .card h2 {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .card p {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .feature {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    [data-theme="light"] .feature h3 {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .feature p {
+      color: #64748b;
+    }
+
+    [data-theme="light"] footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+      
+      header {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      nav {
+        gap: 1rem;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <nav>
-            <ul class="nav-tabs">
-                <li><a href="../index.html"><i class="fas fa-arrow-left"></i> Voltar ao Início</a></li>
-                <li><a href="/e4vx/e4vx.html"><i class="fas fa-microchip"></i> E4vx</a></li>
-                <li><a href="/otimizacao/otimizacao.html"><i class="fas fa-tachometer-alt"></i> Otimização</a></li>
-                <li><a href="/discord/discord.html"><i class="fab fa-discord"></i> Discord</a></li>
-            </ul>
-        </nav>
-        
-        <main class="main-content">
-            <h1>Otimização de PC</h1>
-            <p class="description">A ferramenta definitiva para maximizar o desempenho do seu computador e eliminar gargalos</p>
-            
-            <div class="download-card">
-                <div class="download-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <a href="https://www.mediafire.com/file/nuesm1vweaeqton/Blackn777+Optimizer.rar/file" class="download-link" target="_blank">
-                    <i class="fas fa-download"></i> Download Otimização de PC
-                </a>
-            </div>
-            
-            <div class="features">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="feature-title">Desempenho Máximo</h3>
-                    <p class="feature-desc">Acelere seu sistema removendo processos desnecessários e ajustando configurações para jogos</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Segurança</h3>
-                    <p class="feature-desc">Ferramentas seguras que não comprometem a estabilidade do seu sistema</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="feature-title">Configuração Fácil</h3>
-                    <p class="feature-desc">Interface intuitiva com opções para usuários iniciantes e avançados</p>
-                </div>
-            </div>
-        </main>
-        
-        <footer class="footer">
-            <p>© 2024 Blackn777. Todos os direitos reservados. <a href="#">Política de Privacidade</a></p>
-        </footer>
-    </div>
-    
-    <script>
-        // Sistema de tema claro/escuro
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        }
-        
-        // Verificar tema preferido do usuário
-        if (localStorage.getItem('theme') === 'light' || 
-            (window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage.getItem('theme'))) {
-            document.documentElement.setAttribute('data-theme', 'light');
-        }
-        
-        // Animações de entrada
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.feature').forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.1}s`;
-            observer.observe(item);
+  <div class="gradient-bg"></div>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>Blackn777 Optimizer</span>
+      </div>
+      <nav>
+        <a href="../index.html"><i class="fas fa-home"></i> Início</a>
+        <a href="/e4vx/e4vx.html"><i class="fas fa-microchip"></i> E4vx</a>
+        <a href="/discord/discord.html"><i class="fab fa-discord"></i> Comunidade</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="floating">Otimização de PC</h1>
+      <p class="description pulse">Ferramenta definitiva para maximizar o desempenho do seu computador e eliminar gargalos.</p>
+
+      <div class="card">
+        <h2><i class="fas fa-download"></i> Download</h2>
+        <p>Baixe agora o pacote de otimização completo com todas as ferramentas necessárias para turbinar seu PC.</p>
+        <a href="https://www.mediafire.com/file/nuesm1vweaeqton/Blackn777+Optimizer.rar/file" class="btn" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-download"></i> Baixar Otimização
+        </a>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3><i class="fas fa-bolt"></i> Desempenho Máximo</h3>
+          <p>Remove processos desnecessários e melhora performance em jogos e uso geral com ajustes especializados.</p>
+        </div>
+        <div class="feature">
+          <h3><i class="fas fa-shield-alt"></i> Segurança Garantida</h3>
+          <p>Scripts confiáveis e testados, sem comprometer a estabilidade ou segurança do seu sistema.</p>
+        </div>
+        <div class="feature">
+          <h3><i class="fas fa-cogs"></i> Configuração Inteligente</h3>
+          <p>Interface intuitiva com ajustes automáticos e manuais para todos os níveis de usuário.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2024 Blackn777. Todos os direitos reservados. <a href="#">Política de Privacidade</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Sistema de tema automático + botão flutuante
+    document.addEventListener('DOMContentLoaded', function() {
+      // Verificar preferência de tema
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      
+      if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+      
+      // Criar botão de alternância de tema
+      const themeToggle = document.createElement('button');
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      themeToggle.style.position = 'fixed';
+      themeToggle.style.bottom = '1.5rem';
+      themeToggle.style.right = '1.5rem';
+      themeToggle.style.width = '3rem';
+      themeToggle.style.height = '3rem';
+      themeToggle.style.borderRadius = '50%';
+      themeToggle.style.background = 'var(--primary)';
+      themeToggle.style.color = 'white';
+      themeToggle.style.border = 'none';
+      themeToggle.style.cursor = 'pointer';
+      themeToggle.style.boxShadow = 'var(--shadow-md)';
+      themeToggle.style.display = 'flex';
+      themeToggle.style.alignItems = 'center';
+      themeToggle.style.justifyContent = 'center';
+      themeToggle.style.zIndex = '1000';
+      themeToggle.style.transition = 'var(--transition)';
+      
+      themeToggle.addEventListener('click', function() {
+        const html = document.documentElement;
+        const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+      });
+      
+      document.body.appendChild(themeToggle);
+      
+      // Animar elementos quando visíveis na tela
+      const animateOnScroll = () => {
+        const cards = document.querySelectorAll('.card, .feature');
+        cards.forEach((card, index) => {
+          const cardPosition = card.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+          
+          if (cardPosition < screenPosition) {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }
         });
-    </script>
+      };
+      
+      // Configurar estado inicial para animação
+      document.querySelectorAll('.card, .feature').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+      
+      window.addEventListener('load', animateOnScroll);
+      window.addEventListener('scroll', animateOnScroll);
+    });
+  </script>
 </body>
 </html>
